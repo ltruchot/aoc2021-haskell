@@ -1,10 +1,15 @@
 module Challenge1
-    ( calculateIncreasedCount
+    ( 
+      calculateIncreasedCount,
+      calculateCumulatedIncreasedCount
     ) where
 
 ---- public ---- 
 calculateIncreasedCount :: [Int] -> String
-calculateIncreasedCount = show . length . keepIncreased . makeIncreasingList . (makeCumulativeList [])
+calculateIncreasedCount = show . length . keepIncreased . makeIncreasingList
+
+calculateCumulatedIncreasedCount :: [Int] -> String
+calculateCumulatedIncreasedCount = calculateIncreasedCount . (makeCumulativeList [])
 
 ---- private ----
 data Status = Increased | NotIncreased | NoChange | NA | None deriving (Enum, Show, Eq)
@@ -40,6 +45,7 @@ makeIncreasingList :: [Int] -> [(Int, Status)]
 makeIncreasingList list = tail . enhanceWithMesurement $ list
   where enhanceWithMesurement = scanl makeMesurementPair (-1 :: Int, None)
 
+---- debug only ----
 showTuples :: [(Int, Status)] -> String
 showTuples xs = concatMap format xs
   where
