@@ -26,7 +26,7 @@ source-repository head
 library
   exposed-modules:
       Challenge1
-      TextFile
+      TextFileHelper
   other-modules:
       Paths_aoc2021_haskell
   hs-source-dirs:
