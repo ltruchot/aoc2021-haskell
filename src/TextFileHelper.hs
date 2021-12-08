@@ -1,11 +1,9 @@
 module TextFileHelper
-    ( 
+    (
         fileLinesToList
     ) where
 
 ---- public ----
-fileLinesToList :: String -> IO [Int]
+fileLinesToList :: String -> IO [String]
 fileLinesToList filepath =  do
-    contents <- readFile filepath
-    let list = map read . lines $ contents
-    return list
+    fmap lines . readFile $ filepath

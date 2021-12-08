@@ -26,7 +26,10 @@ source-repository head
 library
   exposed-modules:
       Challenge1
+      Challenge2
+      ListHelper
       TextFileHelper
+      TupleHelper
   other-modules:
       Paths_aoc2021_haskell
   hs-source-dirs:

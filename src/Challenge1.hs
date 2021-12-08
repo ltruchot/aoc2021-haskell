@@ -1,18 +1,24 @@
 module Challenge1
     ( 
-      calculateIncreasedCount,
-      calculateCumulatedIncreasedCount
+      toIncreasedCount,
+      toCumulatedIncreasedCount
     ) where
 
----- public ---- 
-calculateIncreasedCount :: [Int] -> String
-calculateIncreasedCount = show . length . keepIncreased . makeIncreasingList
+import Data.List (length, filter, take, tail)
+import ListHelper (strListToInt)
 
-calculateCumulatedIncreasedCount :: [Int] -> String
-calculateCumulatedIncreasedCount = calculateIncreasedCount . (makeCumulativeList [])
+---- public ---- 
+toIncreasedCount :: [String] -> String
+toIncreasedCount =  calculateIncreasedCount . strListToInt
+
+toCumulatedIncreasedCount :: [String] -> String
+toCumulatedIncreasedCount = calculateIncreasedCount . (makeCumulativeList []) . strListToInt
 
 ---- private ----
 data Status = Increased | NotIncreased | NoChange | NA | None deriving (Enum, Show, Eq)
+
+calculateIncreasedCount :: [Int] -> String
+calculateIncreasedCount = show . length . keepIncreased . makeIncreasingList 
 
 keepIncreased :: [(Int, Status)] -> [(Int, Status)] 
 keepIncreased = filter (\x -> (snd x) == Increased)
@@ -20,7 +26,7 @@ keepIncreased = filter (\x -> (snd x) == Increased)
 makeMesurementPair :: (Int, Status) -> Int -> (Int, Status)
 makeMesurementPair prev current =  
   let prevValue = fst prev
-      status = 
+      status =
         if prevValue == -1 then NA 
         else if prevValue < current then Increased 
         else if prevValue == current then NoChange
@@ -42,15 +48,6 @@ makeCumulativeList accumulator list = case safeTake3 list of
   Nothing -> accumulator
 
 makeIncreasingList :: [Int] -> [(Int, Status)]
-makeIncreasingList list = tail . enhanceWithMesurement $ list
+makeIncreasingList = tail . enhanceWithMesurement
   where enhanceWithMesurement = scanl makeMesurementPair (-1 :: Int, None)
-
----- debug only ----
-showTuples :: [(Int, Status)] -> String
-showTuples xs = concatMap format xs
-  where
-    format (a, b) = (show a) ++ " : " ++ (show b) ++ "\n"
-
-display :: [(Int, Status)] -> IO ()
-display tuples = putStr (showTuples tuples)
 
