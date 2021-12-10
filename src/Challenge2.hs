@@ -12,7 +12,6 @@ import TupleHelper (tuplify, tupleProduct, take2)
 toDirectionsProduct :: [String] -> String
 toDirectionsProduct = show . tupleProduct . foldHorizontalAndDepth . map strToDirectionTuple
 
--- TODO, challenge2'
 toEnhancedDirectionsProduct :: [String] -> String
 toEnhancedDirectionsProduct = show . tupleProduct . take2 . foldHorizontalAndDepthByAim . map strToDirectionTuple
 

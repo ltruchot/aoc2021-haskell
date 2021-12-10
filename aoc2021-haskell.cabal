@@ -27,6 +27,7 @@ library
   exposed-modules:
       Challenge1
       Challenge2
+      Challenge3
       ListHelper
       TextFileHelper
       TupleHelper
