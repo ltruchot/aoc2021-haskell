@@ -1,7 +1,8 @@
 module TupleHelper (
   showIntTuple,
   tuplify,
-  tupleProduct
+  tupleProduct,
+  take2
 ) where
 
 ---- public ----
@@ -17,3 +18,6 @@ tupleProduct :: (Int, Int) -> Int
 tupleProduct tuple = 
   let (a, b) = tuple
   in a * b
+
+take2 :: (a, a, a) -> (a, a)
+take2 entire = (a, b) where (a, b, _) = entire 

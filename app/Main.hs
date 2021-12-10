@@ -2,7 +2,7 @@ module Main where
 
 import TextFileHelper(fileLinesToList)
 import Challenge1 (toIncreasedCount, toCumulatedIncreasedCount)
-import Challenge2 (toDirectionsProduct)
+import Challenge2 (toDirectionsProduct, toEnhancedDirectionsProduct)
 
 main :: IO ()
 main = do 
@@ -15,3 +15,5 @@ main = do
         let data2 = fileLinesToList $ "./data/input2"
         let challenge2 = fmap toDirectionsProduct $ data2
         challenge2 >>= putStrLn
+        let challenge2' = fmap toEnhancedDirectionsProduct $ data2
+        challenge2' >>= putStrLn
