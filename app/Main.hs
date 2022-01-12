@@ -3,7 +3,7 @@ module Main where
 import TextFileHelper(fileLinesToList)
 import Challenge1 (toIncreasedCount, toCumulatedIncreasedCount)
 import Challenge2 (toDirectionsProduct, toEnhancedDirectionsProduct)
-import Challenge3 (toPowerConsumptionProduct)
+import Challenge3 (toPowerConsumptionProduct, toLifeSupportRating)
 
 
 main :: IO ()
@@ -23,3 +23,5 @@ main = do
         let data3 = fileLinesToList "./data/input3"
         let challenge3 = toPowerConsumptionProduct <$> data3
         challenge3 >>= putStrLn
+        let challenge3' = toLifeSupportRating <$> data3
+        challenge3' >>= putStrLn

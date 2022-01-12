@@ -5,3 +5,4 @@ module ListHelper
 
 strListToInt :: [String] -> [Int]
 strListToInt = map read
+

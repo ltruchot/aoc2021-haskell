@@ -29,6 +29,8 @@ library
       Challenge2
       Challenge3
       ListHelper
+      MatrixHelper
+      OrdListHelper
       TextFileHelper
       TupleHelper
   other-modules:
@@ -62,4 +64,6 @@ test-suite aoc2021-haskell-test
   build-depends:
       aoc2021-haskell
     , base >=4.7 && <5
+    , tasty
+    , tasty-hunit
   default-language: Haskell2010

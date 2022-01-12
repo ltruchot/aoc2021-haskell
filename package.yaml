@@ -46,3 +46,5 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - aoc2021-haskell
+    - tasty
+    - tasty-hunit
